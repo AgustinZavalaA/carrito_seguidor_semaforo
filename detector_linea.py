@@ -1,7 +1,19 @@
 import cv2
+import RPi.GPIO as GPIO
+import time
 
 
 def main() -> None:
+    GPIO.setmode(GPIO.BOARD)
+
+    m1_pins = (13, 15)
+    m2_pins = (35, 37)
+
+    GPIO.setup(m1_pins[0], GPIO.OUT)
+    GPIO.setup(m1_pins[1], GPIO.OUT)
+    GPIO.setup(m2_pins[0], GPIO.OUT)
+    GPIO.setup(m2_pins[1], GPIO.OUT)
+
     # analizar el video
     ancho = 640 // 2
     alto = 480 // 2
@@ -58,11 +70,28 @@ def main() -> None:
                 frame, (int(centro_final[0]), int(centro_final[1])), 7, (255, 0, 0), -1
             )
 
+            if centro_final[0] < ancho / 3:
+                GPIO.output(m1_pins[0], GPIO.HIGH)
+                GPIO.output(m1_pins[1], GPIO.LOW)
+                GPIO.output(m2_pins[1], GPIO.HIGH)
+                GPIO.output(m2_pins[0], GPIO.LOW)
+            elif centro_final[0] > ancho / 3 * 2:
+                GPIO.output(m1_pins[0], GPIO.LOW)
+                GPIO.output(m1_pins[1], GPIO.HIGH)
+                GPIO.output(m2_pins[1], GPIO.LOW)
+                GPIO.output(m2_pins[0], GPIO.HIGH)
+            else:
+                GPIO.output(m1_pins[0], GPIO.HIGH)
+                GPIO.output(m1_pins[1], GPIO.LOW)
+                GPIO.output(m2_pins[0], GPIO.HIGH)
+                GPIO.output(m2_pins[1], GPIO.LOW)
+
         cv2.imshow("img", frame)
         # cv2.imshow("lineas", lineas)
 
         if cv2.waitKey(1) & 0xFF == ord("q"):
             cv2.destroyAllWindows()
+            GPIO.cleanup()
             break
 
 
