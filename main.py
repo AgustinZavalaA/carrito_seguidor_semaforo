@@ -43,6 +43,7 @@ def main() -> None:
     #     time.sleep(1)
 
     for i in range(3):
+        pwm.ChangeDutyCycle(33 * i)
         GPIO.output(m1_pins[0], GPIO.HIGH)
         GPIO.output(m1_pins[1], GPIO.LOW)
         GPIO.output(m2_pins[1], GPIO.HIGH)
