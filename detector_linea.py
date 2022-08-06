@@ -88,8 +88,8 @@ def main() -> None:
                     -1,
                 )
 
-                print(centro_final[0], ancho / 2)
-                peso = 70
+                print(ancho / 2 - centro_final[0])
+                peso = 50
 
                 pwm.ChangeDutyCycle(100)
                 if centro_final[0] > ancho / 2 + peso:
@@ -103,7 +103,7 @@ def main() -> None:
                     GPIO.output(m2_pins[1], GPIO.LOW)
                     GPIO.output(m2_pins[0], GPIO.HIGH)
                 else:
-                    pwm.ChangeDutyCycle(60)
+                    pwm.ChangeDutyCycle(50)
                     GPIO.output(m1_pins[1], GPIO.HIGH)
                     GPIO.output(m1_pins[0], GPIO.LOW)
                     GPIO.output(m2_pins[1], GPIO.HIGH)
