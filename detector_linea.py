@@ -70,12 +70,12 @@ def main() -> None:
                 frame, (int(centro_final[0]), int(centro_final[1])), 7, (255, 0, 0), -1
             )
 
-            if centro_final[0] < ancho / 3:
+            if centro_final[0] < ancho - 50:
                 GPIO.output(m1_pins[0], GPIO.HIGH)
                 GPIO.output(m1_pins[1], GPIO.LOW)
                 GPIO.output(m2_pins[1], GPIO.HIGH)
                 GPIO.output(m2_pins[0], GPIO.LOW)
-            elif centro_final[0] > ancho / 3 * 2:
+            elif centro_final[0] > ancho + 50:
                 GPIO.output(m1_pins[0], GPIO.LOW)
                 GPIO.output(m1_pins[1], GPIO.HIGH)
                 GPIO.output(m2_pins[1], GPIO.LOW)
