@@ -22,7 +22,7 @@ def main() -> None:
 
     pwm.start(0)
 
-    pwm.ChangeDutyCycle(70)
+    pwm.ChangeDutyCycle(0)
 
     # analizar el video
     ancho = 640 // 2
@@ -103,13 +103,13 @@ def main() -> None:
                     GPIO.output(m2_pins[1], GPIO.LOW)
                     GPIO.output(m2_pins[0], GPIO.HIGH)
                 else:
-                    pwm.ChangeDutyCycle(50)
+                    pwm.ChangeDutyCycle(60)
                     GPIO.output(m1_pins[1], GPIO.HIGH)
                     GPIO.output(m1_pins[0], GPIO.LOW)
                     GPIO.output(m2_pins[1], GPIO.HIGH)
                     GPIO.output(m2_pins[0], GPIO.LOW)
 
-            cv2.imshow("img", frame)
+            # cv2.imshow("img", frame)
             # cv2.imshow("lineas", lineas)
 
             if cv2.waitKey(1) & 0xFF == ord("q"):
