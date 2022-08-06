@@ -32,6 +32,8 @@ def main() -> None:
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, ancho)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, alto)
 
+    time.sleep(3)
+
     try:
 
         while True:
@@ -88,7 +90,7 @@ def main() -> None:
                 )
 
                 print(centro_final[0], ancho / 2)
-                peso = 30
+                peso = 20
 
                 pwm.ChangeDutyCycle(100)
                 if centro_final[0] < ancho / 2 - peso:
@@ -102,7 +104,7 @@ def main() -> None:
                     GPIO.output(m2_pins[1], GPIO.LOW)
                     GPIO.output(m2_pins[0], GPIO.HIGH)
                 else:
-                    pwm.ChangeDutyCycle(70)
+                    pwm.ChangeDutyCycle(50)
                     GPIO.output(m1_pins[1], GPIO.HIGH)
                     GPIO.output(m1_pins[0], GPIO.LOW)
                     GPIO.output(m2_pins[1], GPIO.HIGH)
