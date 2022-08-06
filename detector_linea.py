@@ -22,7 +22,7 @@ def main() -> None:
 
     pwm.start(0)
 
-    pwm.ChangeDutyCycle(50)
+    pwm.ChangeDutyCycle(70)
 
     # analizar el video
     ancho = 640 // 2
