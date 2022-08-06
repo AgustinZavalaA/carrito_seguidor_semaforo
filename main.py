@@ -18,13 +18,13 @@ def main() -> None:
         GPIO.output(m1_pins[1], GPIO.LOW)
         GPIO.output(m2_pins[0], GPIO.HIGH)
         GPIO.output(m2_pins[1], GPIO.LOW)
-        time.sleep(1)
+        time.sleep(3)
 
         GPIO.output(m1_pins[0], GPIO.LOW)
         GPIO.output(m1_pins[1], GPIO.HIGH)
         GPIO.output(m2_pins[0], GPIO.LOW)
         GPIO.output(m2_pins[1], GPIO.HIGH)
-        time.sleep(1)
+        time.sleep(3)
 
         GPIO.output(m1_pins[0], GPIO.LOW)
         GPIO.output(m1_pins[1], GPIO.LOW)
