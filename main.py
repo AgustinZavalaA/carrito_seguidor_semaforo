@@ -21,7 +21,7 @@ def main() -> None:
 
     pwm.start(0)
 
-    pwm.ChangeDutyCycle(50)
+    pwm.ChangeDutyCycle(100)
 
     # for i in range(3):
     #     GPIO.output(m1_pins[0], GPIO.HIGH)
