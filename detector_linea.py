@@ -81,10 +81,10 @@ def main() -> None:
                 GPIO.output(m2_pins[1], GPIO.LOW)
                 GPIO.output(m2_pins[0], GPIO.HIGH)
             else:
-                GPIO.output(m1_pins[0], GPIO.HIGH)
-                GPIO.output(m1_pins[1], GPIO.LOW)
-                GPIO.output(m2_pins[0], GPIO.HIGH)
-                GPIO.output(m2_pins[1], GPIO.LOW)
+                GPIO.output(m1_pins[1], GPIO.HIGH)
+                GPIO.output(m1_pins[0], GPIO.LOW)
+                GPIO.output(m2_pins[1], GPIO.HIGH)
+                GPIO.output(m2_pins[0], GPIO.LOW)
 
         cv2.imshow("img", frame)
         # cv2.imshow("lineas", lineas)
