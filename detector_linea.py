@@ -37,7 +37,7 @@ def main() -> None:
         while True:
             # leer un frame del video
             _, frame = cap.read()
-            frame = frame[180:240, :, :]
+            # frame = frame[180:240, :, :]
             # convertir el frame a escala de grises
             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
             # detectar lineas negras en el frame
@@ -103,7 +103,7 @@ def main() -> None:
                     GPIO.output(m2_pins[1], GPIO.LOW)
                     GPIO.output(m2_pins[0], GPIO.HIGH)
                 else:
-                    pwm.ChangeDutyCycle(60)
+                    pwm.ChangeDutyCycle(55)
                     GPIO.output(m1_pins[1], GPIO.HIGH)
                     GPIO.output(m1_pins[0], GPIO.LOW)
                     GPIO.output(m2_pins[1], GPIO.HIGH)
