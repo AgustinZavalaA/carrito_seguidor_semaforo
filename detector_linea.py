@@ -37,7 +37,7 @@ def main() -> None:
         while True:
             # leer un frame del video
             _, frame = cap.read()
-            frame = frame[200:240, :, :]
+            frame = frame[180:240, :, :]
             # convertir el frame a escala de grises
             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
             # detectar lineas negras en el frame
@@ -51,7 +51,7 @@ def main() -> None:
 
             cv2.drawContours(frame, lineas_cnts, -1, (0, 255, 0), 3)
 
-            # pwm.ChangeDutyCycle(0)
+            pwm.ChangeDutyCycle(90)
             if len(lineas_cnts) >= 2:
                 areaArray = []
                 for i, c in enumerate(lineas_cnts):
@@ -91,7 +91,7 @@ def main() -> None:
                 print(centro_final[0], ancho / 2)
                 peso = 70
 
-                pwm.ChangeDutyCycle(90)
+                pwm.ChangeDutyCycle(100)
                 if centro_final[0] > ancho / 2 + peso:
                     GPIO.output(m1_pins[0], GPIO.HIGH)
                     GPIO.output(m1_pins[1], GPIO.LOW)
