@@ -3,7 +3,7 @@ import time
 
 
 def main() -> None:
-    GPIO.setmode(GPIO.board)
+    GPIO.setmode(GPIO.BOARD)
 
     m1_pins = (13, 15)
 
