@@ -3,10 +3,10 @@ import cv2
 
 def main() -> None:
     # analizar el video
-    ancho = 640
-    alto = 480
+    ancho = 640 // 2
+    alto = 480 // 2
 
-    cap = cv2.VideoCapture(1)
+    cap = cv2.VideoCapture(0)
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, ancho)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, alto)
 
