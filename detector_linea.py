@@ -37,7 +37,7 @@ def main() -> None:
         while True:
             # leer un frame del video
             _, frame = cap.read()
-            frame = frame[:, 200:240, :]
+            frame = frame[200:240, :, :]
             # convertir el frame a escala de grises
             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
             # detectar lineas negras en el frame
