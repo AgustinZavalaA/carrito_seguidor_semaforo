@@ -59,7 +59,7 @@ def main() -> None:
             )
 
         cv2.imshow("img", frame)
-        cv2.imshow("lineas", lineas)
+        # cv2.imshow("lineas", lineas)
 
         if cv2.waitKey(1) & 0xFF == ord("q"):
             cv2.destroyAllWindows()
