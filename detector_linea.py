@@ -71,13 +71,14 @@ def main() -> None:
             )
 
             print(centro_final[0], ancho / 2)
+            peso = 30
 
-            if centro_final[0] < ancho / 2 - 50:
+            if centro_final[0] < ancho / 2 - peso:
                 GPIO.output(m1_pins[0], GPIO.HIGH)
                 GPIO.output(m1_pins[1], GPIO.LOW)
                 GPIO.output(m2_pins[1], GPIO.HIGH)
                 GPIO.output(m2_pins[0], GPIO.LOW)
-            elif centro_final[0] > ancho / 2 + 50:
+            elif centro_final[0] > ancho / 2 + peso:
                 GPIO.output(m1_pins[0], GPIO.LOW)
                 GPIO.output(m1_pins[1], GPIO.HIGH)
                 GPIO.output(m2_pins[1], GPIO.LOW)
@@ -88,7 +89,7 @@ def main() -> None:
                 GPIO.output(m2_pins[1], GPIO.HIGH)
                 GPIO.output(m2_pins[0], GPIO.LOW)
 
-        cv2.imshow("img", frame)
+        # cv2.imshow("img", frame)
         # cv2.imshow("lineas", lineas)
 
         if cv2.waitKey(1) & 0xFF == ord("q"):
