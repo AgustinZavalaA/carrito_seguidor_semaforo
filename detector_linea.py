@@ -1,6 +1,7 @@
 import cv2
 import RPi.GPIO as GPIO
 import time
+import numpy as np
 
 
 def main() -> None:
