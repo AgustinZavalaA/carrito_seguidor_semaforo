@@ -40,6 +40,18 @@ def main() -> None:
             # frame = frame[180:240, :, :]
             # convertir el frame a escala de grises
             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+
+            # detectar aro rojo
+            lower = np.array([155, 25, 0])
+            upper = np.array([179, 255, 255])
+            mask = cv2.inRange(hsv, lower, upper)
+            # result = cv2.bitwise_and(frame, frame, mask=mask)
+
+            if cv2.countNonZero(mask) > 100:
+                pwm.ChangeDutyCycle(0)
+                continue
+
             # detectar lineas negras en el frame
             lineas = cv2.threshold(gray, 50, 255, cv2.THRESH_BINARY_INV)[1]
             # dilatar las lineas para quedarnos con las mas largas
@@ -103,7 +115,7 @@ def main() -> None:
                     GPIO.output(m2_pins[1], GPIO.LOW)
                     GPIO.output(m2_pins[0], GPIO.HIGH)
                 else:
-                    pwm.ChangeDutyCycle(55)
+                    pwm.ChangeDutyCycle(44)
                     GPIO.output(m1_pins[1], GPIO.HIGH)
                     GPIO.output(m1_pins[0], GPIO.LOW)
                     GPIO.output(m2_pins[1], GPIO.HIGH)
