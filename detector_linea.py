@@ -65,7 +65,7 @@ def main() -> None:
 
             cv2.drawContours(frame, lineas_cnts, -1, (0, 255, 0), 3)
 
-            pwm.ChangeDutyCycle(90)
+            pwm.ChangeDutyCycle(20)
             if len(lineas_cnts) >= 2:
                 areaArray = []
                 for i, c in enumerate(lineas_cnts):
@@ -105,7 +105,7 @@ def main() -> None:
                 print(ancho / 2 - centro_final[0])
                 peso = 50
 
-                pwm.ChangeDutyCycle(50)
+                pwm.ChangeDutyCycle(40)
                 if centro_final[0] > ancho / 2 + peso:
                     GPIO.output(m1_pins[0], GPIO.HIGH)
                     GPIO.output(m1_pins[1], GPIO.LOW)
@@ -117,7 +117,7 @@ def main() -> None:
                     GPIO.output(m2_pins[1], GPIO.LOW)
                     GPIO.output(m2_pins[0], GPIO.HIGH)
                 else:
-                    pwm.ChangeDutyCycle(44)
+                    pwm.ChangeDutyCycle(30)
                     GPIO.output(m1_pins[1], GPIO.HIGH)
                     GPIO.output(m1_pins[0], GPIO.LOW)
                     GPIO.output(m2_pins[1], GPIO.HIGH)
