@@ -33,6 +33,8 @@ def main() -> None:
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, ancho)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, alto)
 
+    ultima_direccion = "Izquierda"
+
     try:
 
         while True:
@@ -111,17 +113,31 @@ def main() -> None:
                     GPIO.output(m1_pins[1], GPIO.LOW)
                     GPIO.output(m2_pins[1], GPIO.HIGH)
                     GPIO.output(m2_pins[0], GPIO.LOW)
+                    ultima_direccion = "Derecha"
                 elif centro_final[0] < ancho / 2 - peso:
                     GPIO.output(m1_pins[0], GPIO.LOW)
                     GPIO.output(m1_pins[1], GPIO.HIGH)
                     GPIO.output(m2_pins[1], GPIO.LOW)
                     GPIO.output(m2_pins[0], GPIO.HIGH)
+                    ultima_direccion = "Izquierda"
                 else:
                     pwm.ChangeDutyCycle(38)
                     GPIO.output(m1_pins[1], GPIO.HIGH)
                     GPIO.output(m1_pins[0], GPIO.LOW)
                     GPIO.output(m2_pins[1], GPIO.HIGH)
                     GPIO.output(m2_pins[0], GPIO.LOW)
+
+            else:
+                if ultima_direccion == "Derecha":
+                    GPIO.output(m1_pins[0], GPIO.HIGH)
+                    GPIO.output(m1_pins[1], GPIO.LOW)
+                    GPIO.output(m2_pins[1], GPIO.HIGH)
+                    GPIO.output(m2_pins[0], GPIO.LOW)
+                else:
+                    GPIO.output(m1_pins[0], GPIO.LOW)
+                    GPIO.output(m1_pins[1], GPIO.HIGH)
+                    GPIO.output(m2_pins[1], GPIO.LOW)
+                    GPIO.output(m2_pins[0], GPIO.HIGH)
 
             cv2.imshow("img", frame)
             # cv2.imshow("lineas", lineas)
