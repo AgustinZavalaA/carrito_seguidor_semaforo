@@ -65,7 +65,7 @@ def main() -> None:
 
             cv2.drawContours(frame, lineas_cnts, -1, (0, 255, 0), 3)
 
-            pwm.ChangeDutyCycle(20)
+            pwm.ChangeDutyCycle(45)
             if len(lineas_cnts) >= 2:
                 areaArray = []
                 for i, c in enumerate(lineas_cnts):
