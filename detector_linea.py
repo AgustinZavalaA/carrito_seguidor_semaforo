@@ -129,6 +129,7 @@ def main() -> None:
 
             else:
                 pwm.ChangeDutyCycle(45)
+                print(f"PERDIDO girandos a la {ultima_direccion}")
                 if ultima_direccion == "Derecha":
                     GPIO.output(m1_pins[0], GPIO.HIGH)
                     GPIO.output(m1_pins[1], GPIO.LOW)
