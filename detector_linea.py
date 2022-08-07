@@ -49,7 +49,8 @@ def main() -> None:
             mask = cv2.inRange(hsv, lower, upper)
             # result = cv2.bitwise_and(frame, frame, mask=mask)
 
-            if cv2.countNonZero(mask) > 100:
+            print(f"red size: {cv2.countNonZero(mask)}")
+            if cv2.countNonZero(mask) > 10_000:
                 pwm.ChangeDutyCycle(0)
                 continue
 
